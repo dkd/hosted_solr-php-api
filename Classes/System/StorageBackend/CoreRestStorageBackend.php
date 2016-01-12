@@ -2,6 +2,7 @@
 
 namespace HostedSolr\ApiClient\System\StorageBackend;
 
+use HostedSolr\ApiClient\Domain\Api\Client\Solr\CoreBuilder;
 use HostedSolr\ApiClient\Exception\HostedSolrApiException;
 use HostedSolr\ApiClient\Domain\Api\Client\Solr\Core;
 
@@ -54,14 +55,16 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend
         $this->throwApiExceptionWhenStatusIsUnexpected(array(200), $response, 'Unexpected API Status during get request ');
 
         $jsonResponse = $response->getBody();
-        $coresFromApi = json_decode($jsonResponse);
+        $apiCores = json_decode($jsonResponse);
 
-        foreach ($coresFromApi as $coreFromApi) {
-            $core = new Core($coreFromApi->name,
-                                $coresFromApi->system,
-                                $coresFromApi->schema,
-                                $coresFromApi->solr_version,
-                                $coresFromApi->id);
+        foreach ($apiCores as $apiCore) {
+            $core = CoreBuilder::buildFromScalarValues(
+                $apiCore->name,
+                $apiCore->system,
+                $apiCore->schema,
+                $apiCore->solr_version,
+                $apiCore->created_at,
+                $apiCore->updated_at);
             $cores[] = $core;
         }
 

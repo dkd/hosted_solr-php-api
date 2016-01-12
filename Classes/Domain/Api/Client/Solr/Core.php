@@ -64,8 +64,11 @@ class Core
      * @param string $system
      * @param string $schema
      * @param string $solrVersion
+     * @param integer $id
+     * @param \DateTime $createdAt
+     * @param \DateTime $updatedAt
      */
-    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null)
+    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null, \DateTime $createdAt = null, \DateTime $updateDate = null)
     {
         $this->name = $name;
         $this->system = $system;
