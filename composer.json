@@ -1,0 +1,40 @@
+{
+    "name": "hosted-solr/apiclient",
+    "type": "hosted-solr-php-api-client",
+    "description": "PHP Api Client for hosted-solr.com",
+    "minimum-stability": "alpha",
+    "license": "GPL-2.0+",
+    "keywords": ["typo3", "TYPO3 CMS", "solr", "drupal", "magento"],
+    "homepage": "http://www.hosted-solr.com",
+    "authors": [
+        {
+            "name": "Timo Schmidt",
+            "email": "timo.schmidt@dkd.de",
+            "role": "Lead Developer"
+        }
+    ],
+    "support": {
+        "email": "support@hosted-solr.com"
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "v6.1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.3",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "HostedSolr\\ApiClient\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HostedSolr\\ApiClient\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

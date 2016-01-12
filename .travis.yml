@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: 7.0
+
+before_install:
+  - composer self-update
+  - composer --version
+  - composer global require fabpot/php-cs-fixer
+
+install: Tests/Build/bootstrap.sh
+script: Tests/Build/cibuild.sh
+after_script: Tests/Build/cleanup.sh
+
+cache:
+  directories:
+    - $HOME/.composer/cache
