@@ -96,7 +96,7 @@ class CoreRestStorageBackendTest extends AbstractUnitTest
         $responseMock = $this->getMock(Response::class, array('getBody', 'getStatusCode'), array(), '', false);
         $responseMock->expects($this->any())->method('getStatusCode')->will($this->returnValue(204));
         $expectedDeleteEndpoint = 'https://myendpoint.com/api/solr_cores/1.json?api_token=foo&secret_token=bar';
-        $this->httpClientMock->expects($this->once())->method('post')->with($expectedDeleteEndpoint)->will($this->returnValue($responseMock));
+        $this->httpClientMock->expects($this->once())->method('delete')->with($expectedDeleteEndpoint)->will($this->returnValue($responseMock));
 
         $result = $this->coreRestStorageBackend->remove($core);
         $this->assertTrue($result);
