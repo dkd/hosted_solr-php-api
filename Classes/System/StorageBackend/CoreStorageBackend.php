@@ -37,4 +37,12 @@ interface CoreStorageBackend {
      * @return boolean
      */
     public function remove(Core $solrCore);
+
+    /**
+     * Removes a core by it's id.
+     *
+     * @param integer $id
+     * @return boolean
+     */
+    public function removeById($id);
 }

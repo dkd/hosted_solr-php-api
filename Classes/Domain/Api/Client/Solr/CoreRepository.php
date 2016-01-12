@@ -24,6 +24,7 @@ class CoreRepository
 
     /**
      * @param Core $core
+     * @return bool
      */
     public function add(Core $core)
     {
@@ -32,6 +33,7 @@ class CoreRepository
 
     /**
      * @param Core $core
+     * @return bool
      */
     public function has(Core $core)
     {
@@ -47,10 +49,20 @@ class CoreRepository
 
     /**
      * @param Core $core
+     * @return bool
      */
     public function remove(Core $core)
     {
         return $this->storageBackend->remove($core);
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function removeById($id)
+    {
+        return $this->storageBackend->removeById($id);
     }
 
     /**
