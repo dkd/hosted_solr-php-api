@@ -38,3 +38,6 @@ Explorer the api service an execute your operations (Add the following to your t
     $service    = \HostedSolr\ApiClient\Factory::getApiService('<your-api-token>','<your-secret-token>');
     $allCores   = $service->getAllCores();
 ```
+
+
+
