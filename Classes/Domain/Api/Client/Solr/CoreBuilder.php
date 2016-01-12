@@ -1,7 +1,8 @@
 <?php
 namespace HostedSolr\ApiClient\Domain\Api\Client\Solr;
 
-class CoreBuilder {
+class CoreBuilder
+{
 
     /**
      * @var string
@@ -14,7 +15,7 @@ class CoreBuilder {
      * @param string $schema
      * @param string $solrVersion
      */
-    public static function build($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8') {
-
+    public static function build($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8')
+    {
     }
 }

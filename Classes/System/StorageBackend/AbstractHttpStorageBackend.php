@@ -4,7 +4,8 @@ namespace HostedSolr\ApiClient\System\StorageBackend;
 
 use HostedSolr\ApiClient\Domain\Api\Configuration;
 
-abstract class AbstractHttpStorageBackend {
+abstract class AbstractHttpStorageBackend
+{
 
     /**
      * @var \GuzzleHttp\Client
@@ -20,7 +21,8 @@ abstract class AbstractHttpStorageBackend {
      * @param \GuzzleHttp\Client $httpClient
      * @param Configuration $configuration
      */
-    public function __construct(\GuzzleHttp\Client $httpClient, Configuration $configuration) {
+    public function __construct(\GuzzleHttp\Client $httpClient, Configuration $configuration)
+    {
         $this->httpClient = $httpClient;
         $this->configuration = $configuration;
     }

@@ -4,7 +4,8 @@ namespace HostedSolr\ApiClient\Exception;
 
 use GuzzleHttp\Psr7\Response;
 
-class HostedSolrApiException extends \Exception {
+class HostedSolrApiException extends \Exception
+{
 
     /**
      * @var Response
@@ -26,5 +27,4 @@ class HostedSolrApiException extends \Exception {
     {
         return $this->response;
     }
-
 }

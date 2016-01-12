@@ -5,12 +5,14 @@ namespace HostedSolr\ApiClient\System\StorageBackend;
 use HostedSolr\ApiClient\Exception\HostedSolrApiException;
 use HostedSolr\ApiClient\Domain\Api\Client\Solr\Core;
 
-class CoreRestStorageBackend extends AbstractHttpStorageBackend {
+class CoreRestStorageBackend extends AbstractHttpStorageBackend
+{
 
     /**
      * @return string
      */
-    protected function getEndpointUrl() {
+    protected function getEndpointUrl()
+    {
         return $this->configuration->getEndpointBaseUrl() .
                 '/api/solr_cores';
     }
@@ -28,7 +30,7 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend {
 
     protected function throwApiExceptionWhenStatusIsUnexpected(array $allowedStatusCodes, $response, $errorMessage)
     {
-        if(!in_array($response->getStatusCode(), $allowedStatusCodes)) {
+        if (!in_array($response->getStatusCode(), $allowedStatusCodes)) {
             $exception = new HostedSolrApiException($errorMessage . ' Statuscode: ' . (int) $response->getStatusCode());
             $exception->setResponse($response);
             throw $exception;
@@ -40,7 +42,8 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend {
      *
      * @return Core[]
      */
-    public function findAll() {
+    public function findAll()
+    {
         $cores = array();
 
         $url = $this->getEndpointUrl() . '.json?';
@@ -53,9 +56,8 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend {
         $jsonResponse = $response->getBody();
         $coresFromApi = json_decode($jsonResponse);
 
-        foreach($coresFromApi as $coreFromApi) {
-
-            $core = new Core(   $coreFromApi->name,
+        foreach ($coresFromApi as $coreFromApi) {
+            $core = new Core($coreFromApi->name,
                                 $coresFromApi->system,
                                 $coresFromApi->schema,
                                 $coresFromApi->solr_version,
@@ -73,8 +75,8 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend {
      * @throws \HostedSolr\ApiClient\Exception\HostedSolrApiException
      * @return boolean
      */
-    public function add(Core $solrCore) {
-
+    public function add(Core $solrCore)
+    {
         $url = $this->getEndpointUrl() . '.json?solr_core[name]=' . $solrCore->getName() .
                     '&solr_core[solr_version]='. $solrCore->getSolrVersion() .
                     '&solr_core[system]=' . $solrCore->getSystem() .
@@ -95,7 +97,8 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend {
      * @throws \HostedSolr\ApiClient\Exception\HostedSolrApiException
      * @return boolean
      */
-    public function remove(Core $solrCore) {
+    public function remove(Core $solrCore)
+    {
         $url = $this->getEndpointUrl() . '/' . $solrCore->getId() . '.json?';
         $url = $this->addApiSecretAndToken($url);
         $response = $this->httpClient->post($url);

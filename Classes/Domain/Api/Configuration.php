@@ -2,7 +2,8 @@
 
 namespace HostedSolr\ApiClient\Domain\Api;
 
-class Configuration {
+class Configuration
+{
 
     /**
      * @var string
@@ -24,7 +25,8 @@ class Configuration {
      * @param string $apiToken
      * @param string $secretToken
      */
-    public function __construct($endpointBaseUrl, $apiToken, $secretToken) {
+    public function __construct($endpointBaseUrl, $apiToken, $secretToken)
+    {
         $this->endpointBaseUrl = $endpointBaseUrl;
         $this->apiToken = $apiToken;
         $this->secretToken = $secretToken;

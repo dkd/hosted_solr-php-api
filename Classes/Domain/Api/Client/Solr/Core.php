@@ -1,7 +1,8 @@
 <?php
 namespace HostedSolr\ApiClient\Domain\Api\Client\Solr;
 
-class Core {
+class Core
+{
 
     /**
      * @var null
@@ -64,7 +65,8 @@ class Core {
      * @param string $schema
      * @param string $solrVersion
      */
-    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = NULL) {
+    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null)
+    {
         $this->name = $name;
         $this->system = $system;
         $this->schema = $schema;

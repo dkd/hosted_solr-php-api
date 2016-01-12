@@ -6,7 +6,8 @@ namespace HostedSolr\ApiClient\Tests\Unit;
  * Class AbstractUnitTest
  * @package HostedSolr\ApiClient\Tests
  */
-abstract class AbstractUnitTest extends \PHPUnit_Framework_TestCase {
+abstract class AbstractUnitTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * Returns the absolute root path to the fixtures.
      *
