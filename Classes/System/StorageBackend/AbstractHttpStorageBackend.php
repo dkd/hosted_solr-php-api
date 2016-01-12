@@ -4,9 +4,14 @@ namespace HostedSolr\ApiClient\System\StorageBackend;
 
 use HostedSolr\ApiClient\Domain\Api\Configuration;
 
+/**
+ * Class AbstractHttpStorageBackend
+ *
+ * @author Timo Schmidt <timo.schmidt@dkd.de>
+ * @package HostedSolr\ApiClient\System\StorageBackend
+ */
 abstract class AbstractHttpStorageBackend
 {
-
     /**
      * @var \GuzzleHttp\Client
      */

@@ -2,9 +2,16 @@
 
 namespace HostedSolr\ApiClient\Domain\Api;
 
+/**
+ * Class Configuration
+ *
+ * Holds all api related configuration options that are needed.
+ *
+ * @author Timo Schmidt <timo.schmidt@dkd.de> *
+ * @package HostedSolr\ApiClient\Domain\Api
+ */
 class Configuration
 {
-
     /**
      * @var string
      */

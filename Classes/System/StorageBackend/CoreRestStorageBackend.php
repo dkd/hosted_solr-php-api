@@ -5,10 +5,16 @@ namespace HostedSolr\ApiClient\System\StorageBackend;
 use HostedSolr\ApiClient\Domain\Api\Client\Solr\CoreBuilder;
 use HostedSolr\ApiClient\Exception\HostedSolrApiException;
 use HostedSolr\ApiClient\Domain\Api\Client\Solr\Core;
+use Psr\Http\Message\ResponseInterface;
 
-class CoreRestStorageBackend extends AbstractHttpStorageBackend
+/**
+ * Class CoreRestStorageBackend
+ *
+ * @author Timo Schmidt <timo.schmidt@dkd.de>
+ * @package HostedSolr\ApiClient\System\StorageBackend
+ */
+class CoreRestStorageBackend extends AbstractHttpStorageBackend implements CoreStorageBackend
 {
-
     /**
      * @return string
      */
@@ -28,7 +34,12 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend
         '&secret_token=' . $this->configuration->getSecretToken();
     }
 
-
+    /**
+     * @param array $allowedStatusCodes
+     * @param ResponseInterface $response
+     * @param string $errorMessage
+     * @throws \HostedSolr\ApiClient\Exception\HostedSolrApiException
+     */
     protected function throwApiExceptionWhenStatusIsUnexpected(array $allowedStatusCodes, $response, $errorMessage)
     {
         if (!in_array($response->getStatusCode(), $allowedStatusCodes)) {
@@ -63,8 +74,14 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend
                 $apiCore->system,
                 $apiCore->schema,
                 $apiCore->solr_version,
+                $apiCore->id,
                 $apiCore->created_at,
-                $apiCore->updated_at);
+                $apiCore->updated_at,
+                $apiCore->user_id,
+                $apiCore->is_activated,
+                $apiCore->internal_name,
+                $apiCore->password
+            );
             $cores[] = $core;
         }
 
@@ -104,7 +121,7 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend
     {
         $url = $this->getEndpointUrl() . '/' . $solrCore->getId() . '.json?';
         $url = $this->addApiSecretAndToken($url);
-        $response = $this->httpClient->post($url);
+        $response = $this->httpClient->delete($url);
 
         $this->throwApiExceptionWhenStatusIsUnexpected(array(204), $response, 'Unexpected API Status during delete request!');
 

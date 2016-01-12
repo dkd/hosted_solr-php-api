@@ -52,6 +52,12 @@ class CoreRestStorageBackendTest extends AbstractUnitTest
 
         $cores = $this->coreRestStorageBackend->findAll();
         $this->assertSame(2, count($cores), 'Unexpected amount of cores');
+
+        $core1 = $cores[0];
+
+        $dateStringCore1 = $core1->getCreatedAt()->format("Y-m-d H:i:s");
+        $this->assertSame("2015-11-12 14:41:52", $dateStringCore1);
+
     }
 
     /**

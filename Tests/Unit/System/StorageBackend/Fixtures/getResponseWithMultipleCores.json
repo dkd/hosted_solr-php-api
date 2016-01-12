@@ -1,25 +1,30 @@
-[{
-    "id":            1,
-    "name":          "test",
-    "created_at":    "2013-08-08T12:04:34Z",
-    "updated_at":    "2013-08-08T12:04:34Z",
-    "user_id":       1,
-    "solr_version":  "3.5",
-    "internal_name": "18221ac1e6b-test",
-    "password":      "cb50cf62d14",
-    "is_activated":  true,
-    "system":        "typo3"
-},
-{
-    "id":            2,
-    "name":          "test2",
-    "created_at":    "2013-08-08T12:04:34Z",
-    "updated_at":    "2013-08-08T12:04:34Z",
-    "user_id":       2,
-    "solr_version":  "4.1",
-    "internal_name": "18221ac1e6b-test",
-    "password":      "cb50cf62d14",
-    "is_activated":  true,
-    "system":        "typo3"
- }
+[
+    {
+        "id":909,
+        "name":"test-48",
+        "created_at":"2015-11-12T14:41:52.000+01:00",
+        "updated_at":"2015-12-12T14:44:14.000+01:00",
+        "user_id":281,
+        "solr_version":"4.8",
+        "schema":"english",
+        "internal_name":"fdsfsdsd-test-48",
+        "password":"sasasasa",
+        "is_activated":false,
+        "system":"typo3",
+        "host":"dsdsds.hosted-solr.com"
+    },
+    {
+        "id":919,
+        "name":"test-38",
+        "created_at":"2015-11-12T14:41:52.000+01:00",
+        "updated_at":"2015-12-12T14:44:14.000+01:00",
+        "user_id":281,
+        "solr_version":"4.8",
+        "schema":"english",
+        "internal_name":"fdfafsdfds-test-48",
+        "password":"sasasasa",
+        "is_activated":false,
+        "system":"typo3",
+        "host":"dsdsdsds.hosted-solr.com"
+    }
 ]

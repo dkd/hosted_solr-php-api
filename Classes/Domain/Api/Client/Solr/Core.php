@@ -1,9 +1,16 @@
 <?php
 namespace HostedSolr\ApiClient\Domain\Api\Client\Solr;
 
+/**
+ * Class Core
+ *
+ * Represents a single solr core
+ *
+ * @author Timo Schmidt <timo.schmidt@dkd.de>
+ * @package HostedSolr\ApiClient\Domain\Api\Client\Solr
+ */
 class Core
 {
-
     /**
      * @var null
      */
@@ -60,21 +67,31 @@ class Core
     protected $isActivated;
 
     /**
-     * @param string $name
+     * @param $name
      * @param string $system
      * @param string $schema
      * @param string $solrVersion
-     * @param integer $id
+     * @param null $id
      * @param \DateTime $createdAt
-     * @param \DateTime $updatedAt
+     * @param \DateTime $updateAt
+     * @param null $userId
+     * @param bool $isActivated
+     * @param null $internalName
+     * @param null $password
      */
-    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null, \DateTime $createdAt = null, \DateTime $updateDate = null)
+    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null, \DateTime $createdAt = null, \DateTime $updateAt = null, $userId = null, $isActivated = false, $internalName = null, $password = null)
     {
         $this->name = $name;
         $this->system = $system;
         $this->schema = $schema;
         $this->solrVersion = $solrVersion;
         $this->id = $id;
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updateAt;
+        $this->userId = $userId;
+        $this->isActivated = $isActivated;
+        $this->internalName = $internalName;
+        $this->password = $password;
     }
 
     /**

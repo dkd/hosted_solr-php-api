@@ -4,6 +4,10 @@ namespace HostedSolr\ApiClient\Exception;
 
 use GuzzleHttp\Psr7\Response;
 
+/**
+ * Class HostedSolrApiException
+ * @package HostedSolr\ApiClient\Exception
+ */
 class HostedSolrApiException extends \Exception
 {
 
