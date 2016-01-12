@@ -119,7 +119,19 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend implements CoreS
      */
     public function remove(Core $solrCore)
     {
-        $url = $this->getEndpointUrl() . '/' . $solrCore->getId() . '.json?';
+        return $this->removeById($solrCore->getId());
+    }
+
+
+    /**
+     * Removes a core by it's id.
+     *
+     * @param integer $id
+     * @return boolean
+     */
+    public function removeById($id)
+    {
+        $url = $this->getEndpointUrl() . '/' . (int) $id . '.json?';
         $url = $this->addApiSecretAndToken($url);
         $response = $this->httpClient->delete($url);
 

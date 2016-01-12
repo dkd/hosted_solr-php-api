@@ -2,6 +2,7 @@
 
 namespace HostedSolr\ApiClient\Domain\Api;
 
+use HostedSolr\ApiClient\Domain\Api\Client\Solr\Core;
 use HostedSolr\ApiClient\Domain\Api\Client\Solr\CoreBuilder;
 use HostedSolr\ApiClient\Domain\Api\Client\Solr\CoreRepository;
 
@@ -15,7 +16,8 @@ class Service {
     /**
      * @param CoreRepository $coreRepository
      */
-    public function __construct(CoreRepository $coreRepository) {
+    public function __construct(CoreRepository $coreRepository)
+    {
         $this->coreRepository = $coreRepository;
     }
 
@@ -24,7 +26,8 @@ class Service {
      *
      * @return Client\Solr\Core[]
      */
-    public function getAllCores() {
+    public function getAllCores()
+    {
         return $this->coreRepository->findAll();
     }
 
@@ -34,7 +37,8 @@ class Service {
      *
      * @return boolean
      */
-    public function deleteAllCores() {
+    public function deleteAllCores()
+    {
         $allResult = true;
         $cores = $this->getAllCores();
         foreach($cores as $core) {
@@ -43,6 +47,23 @@ class Service {
         }
 
         return $allResult;
+    }
+
+    /**
+     * @param Core $core
+     * @return bool
+     */
+    public function deleteCore(Core $core)
+    {
+        return $this->coreRepository->remove($core);
+    }
+
+    /**
+     * @param integer $id
+     */
+    public function deleteCoreById($id)
+    {
+        return $this->coreRepository->removeById($id);
     }
 
     /**
@@ -56,7 +77,8 @@ class Service {
      * @throws \InvalidArgumentException
      * @return boolean
      */
-    public function createNewCore($name, $system = 'typo3', $solrVersion = '4.8', $schema = 'english') {
+    public function createNewCore($name, $system = 'typo3', $solrVersion = '4.8', $schema = 'english')
+    {
         if(trim($name) === '') {
             throw new \InvalidArgumentException('Can not create a core without passing a name');
         }
@@ -68,7 +90,8 @@ class Service {
     /**
      * @return CoreRepository
      */
-    public function getCoreRepository() {
+    public function getCoreRepository()
+    {
         return $this->coreRepository;
     }
 }
