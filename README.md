@@ -1,6 +1,9 @@
 Hosted-solr.com PHP Api Client
 ---------
 
+[![Build Status](https://api.travis-ci.org/dkd/hosted_solr-php-api.svg)](https://travis-ci.org/dkd/hosted_solr-php-api)
+
+
 With this php library you can list, created and delete solr cores on hosted-solr.com with your PHP Application.
 
 The API-Client comes with some PHP Classes that are usefull to communicate with the api
