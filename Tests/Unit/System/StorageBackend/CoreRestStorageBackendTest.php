@@ -55,6 +55,9 @@ class CoreRestStorageBackendTest extends AbstractUnitTest
 
         $core1 = $cores[0];
 
+        $hostName = $core1->getHost();
+        $this->assertSame("dsdsds.hosted-solr.com", $hostName);
+
         $dateStringCore1 = $core1->getCreatedAt()->format("Y-m-d H:i:s");
         $this->assertSame("2015-11-12 14:41:52", $dateStringCore1);
 
