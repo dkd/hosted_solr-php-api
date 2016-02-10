@@ -80,7 +80,8 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend implements CoreS
                 $apiCore->user_id,
                 $apiCore->is_activated,
                 $apiCore->internal_name,
-                $apiCore->password
+                $apiCore->password,
+                $apiCore->host
             );
             $cores[] = $core;
         }

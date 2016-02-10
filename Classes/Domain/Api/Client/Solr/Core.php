@@ -67,6 +67,11 @@ class Core
     protected $isActivated;
 
     /**
+     * @var string (e.g. dsdsdsds.hosted-solr.com)
+     */
+    protected $host;
+
+    /**
      * @param $name
      * @param string $system
      * @param string $schema
@@ -78,8 +83,9 @@ class Core
      * @param bool $isActivated
      * @param null $internalName
      * @param null $password
+     * @param string $host
      */
-    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null, \DateTime $createdAt = null, \DateTime $updateAt = null, $userId = null, $isActivated = false, $internalName = null, $password = null)
+    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null, \DateTime $createdAt = null, \DateTime $updateAt = null, $userId = null, $isActivated = false, $internalName = null, $password = null, $host = '')
     {
         $this->name = $name;
         $this->system = $system;
@@ -92,6 +98,7 @@ class Core
         $this->isActivated = $isActivated;
         $this->internalName = $internalName;
         $this->password = $password;
+        $this->host = $host;
     }
 
     /**
@@ -180,5 +187,13 @@ class Core
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
     }
 }
