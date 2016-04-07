@@ -1,6 +1,7 @@
 {
     "name": "hosted-solr/apiclient",
     "type": "hosted-solr-php-api-client",
+    "version": "1.0.0",
     "description": "PHP Api Client for hosted-solr.com",
     "minimum-stability": "alpha",
     "license": "GPL-2.0+",
@@ -9,8 +10,11 @@
     "authors": [
         {
             "name": "Timo Schmidt",
-            "email": "timo.schmidt@dkd.de",
-            "role": "Lead Developer"
+            "email": "timo.schmidt@dkd.de"
+        },
+        {
+            "name": "Arthur Rehm",
+            "email": "arthur.rehm@dkd.de"
         }
     ],
     "support": {
