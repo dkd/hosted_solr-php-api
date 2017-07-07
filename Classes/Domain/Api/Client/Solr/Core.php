@@ -47,6 +47,11 @@ class Core
     protected $solrVersion;
 
     /**
+     * @var string (e.g. ext-6.1)
+     */
+    protected $variant;
+
+    /**
      * @var string (e.g. typo3)
      */
     protected $system;
@@ -85,12 +90,13 @@ class Core
      * @param null $password
      * @param string $host
      */
-    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $id = null, \DateTime $createdAt = null, \DateTime $updateAt = null, $userId = null, $isActivated = false, $internalName = null, $password = null, $host = '')
+    public function __construct($name, $system = 'typo3', $schema = 'english', $solrVersion = '4.8', $variant, $id = null, \DateTime $createdAt = null, \DateTime $updateAt = null, $userId = null, $isActivated = false, $internalName = null, $password = null, $host = '')
     {
         $this->name = $name;
         $this->system = $system;
         $this->schema = $schema;
         $this->solrVersion = $solrVersion;
+        $this->variant = $variant;
         $this->id = $id;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updateAt;
@@ -163,6 +169,14 @@ class Core
     public function getSolrVersion()
     {
         return $this->solrVersion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVariant()
+    {
+        return $this->variant;
     }
 
     /**

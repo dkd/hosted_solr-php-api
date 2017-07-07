@@ -74,6 +74,7 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend implements CoreS
                 $apiCore->system,
                 $apiCore->schema,
                 $apiCore->solr_version,
+                $apiCore->variant,
                 $apiCore->id,
                 $apiCore->created_at,
                 $apiCore->updated_at,
@@ -102,6 +103,7 @@ class CoreRestStorageBackend extends AbstractHttpStorageBackend implements CoreS
                     '&solr_core[solr_version]='. $solrCore->getSolrVersion() .
                     '&solr_core[system]=' . $solrCore->getSystem() .
                     '&solr_core[schema]=' . $solrCore->getSchema() .
+                    '&solr_core[variant]=' . $solrCore->getVariant() .
                     '&';
         $url = $this->addApiSecretAndToken($url);
         $response = $this->httpClient->post($url);

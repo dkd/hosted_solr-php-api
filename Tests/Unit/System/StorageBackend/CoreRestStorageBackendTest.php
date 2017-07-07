@@ -80,10 +80,10 @@ class CoreRestStorageBackendTest extends AbstractUnitTest
      */
     public function canAddAValidCore()
     {
-        $core = new Core('testcore', 'typo3', 'english', '4.8');
+        $core = new Core('testcore', 'typo3', 'english', '4.8', 'ext-3.0');
         $responseMock = $this->getMock(Response::class, array('getBody', 'getStatusCode'), array(), '', false);
         $responseMock->expects($this->any())->method('getStatusCode')->will($this->returnValue(201));
-        $expectedPostEndpoint = 'https://myendpoint.com/api/solr_cores.json?solr_core[name]=testcore&solr_core[solr_version]=4.8&solr_core[system]=typo3&solr_core[schema]=english&api_token=foo&secret_token=bar';
+        $expectedPostEndpoint = 'https://myendpoint.com/api/solr_cores.json?solr_core[name]=testcore&solr_core[solr_version]=4.8&solr_core[system]=typo3&solr_core[schema]=english&solr_core[variant]=ext-3.0&api_token=foo&secret_token=bar';
         $this->httpClientMock->expects($this->once())->method('post')->with($expectedPostEndpoint)->will($this->returnValue($responseMock));
 
         $result = $this->coreRestStorageBackend->add($core);
@@ -95,7 +95,7 @@ class CoreRestStorageBackendTest extends AbstractUnitTest
      */
     public function canRemoveAValidCore()
     {
-        $core = new Core('testcore', 'typo3', 'english', '4.8', 1);
+        $core = new Core('testcore', 'typo3', 'english', '4.8', 'ext-3.0', 1);
         $responseMock = $this->getMock(Response::class, array('getBody', 'getStatusCode'), array(), '', false);
         $responseMock->expects($this->any())->method('getStatusCode')->will($this->returnValue(204));
         $expectedDeleteEndpoint = 'https://myendpoint.com/api/solr_cores/1.json?api_token=foo&secret_token=bar';
