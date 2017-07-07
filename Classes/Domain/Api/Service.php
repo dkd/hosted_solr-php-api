@@ -59,7 +59,10 @@ class Service {
     }
 
     /**
+     * Deletes core by given identifier
+     *
      * @param integer $id
+     * @return bool
      */
     public function deleteCoreById($id)
     {
@@ -77,13 +80,13 @@ class Service {
      * @throws \InvalidArgumentException
      * @return boolean
      */
-    public function createNewCore($name, $system = 'typo3', $solrVersion = '4.8', $schema = 'english')
+    public function createNewCore($name, $system = 'typo3', $solrVersion = '4.8', $schema = 'english', $variant = 'ext-6.1')
     {
         if(trim($name) === '') {
             throw new \InvalidArgumentException('Can not create a core without passing a name');
         }
 
-        $coreToCreate = CoreBuilder::buildFromScalarValues($name, $system, $schema, $solrVersion);
+        $coreToCreate = CoreBuilder::buildFromScalarValues($name, $system, $schema, $solrVersion, $variant);
         return $this->coreRepository->add($coreToCreate);
     }
 
