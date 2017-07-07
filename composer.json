@@ -1,7 +1,6 @@
 {
     "name": "hosted-solr/apiclient",
     "type": "hosted-solr-php-api-client",
-    "version": "1.0.0",
     "description": "PHP Api Client for hosted-solr.com",
     "minimum-stability": "alpha",
     "license": "GPL-2.0+",
